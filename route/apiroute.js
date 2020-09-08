@@ -1,5 +1,6 @@
 //Load
 var noteData = require("../db/db.json");
+const fs = require('fs');
 
 // Route
 module.exports = function (app){
@@ -8,10 +9,13 @@ module.exports = function (app){
     });
     console.log(noteData);
     app.post("api.notes", function (req, res){
-
+        noteData.push(req.body);
+        res.json(noteData);
+        
     });
     app.delete("/api/notes", function (req, res){
-
+        let delete = req.param.id;
+    
     });
 };
  
